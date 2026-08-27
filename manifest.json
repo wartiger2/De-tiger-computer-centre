@@ -1,0 +1,17 @@
+{
+  "name": "War Tiger Computer Centre",
+  "short_name": "War Tiger",
+  "description": "Digital and business solutions from War Tiger Computer Centre.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
