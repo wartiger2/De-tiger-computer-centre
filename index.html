@@ -14,6 +14,37 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./service-worker.js");
   });
 }
+</script><script>
+let deferredPrompt;
+const installBtn = document.createElement('div');
+installBtn.innerHTML = `
+  <div id="installBanner" style="display:none; position:fixed; bottom:80px; left:10px; right:10px; background:#FF6B00; color:white; padding:15px; border-radius:12px; text-align:center; z-index:9999; box-shadow:0 4px 15px rgba(0,0,0,0.3)">
+    <p style="margin:5px 0; font-weight:bold;">📱 Install War Tiger App</p>
+    <p style="margin:5px 0; font-size:13px;">Get faster access + works offline</p>
+    <button id="installBtn" style="background:white; color:#FF6B00; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; margin-top:8px;">Install Now</button>
+    <span id="closeBtn" style="position:absolute; top:5px; right:10px; cursor:pointer;">✕</span>
+  </div>
+`;
+document.body.appendChild(installBtn);
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('installBanner').style.display = 'block';
+});
+
+document.getElementById('installBtn').addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    document.getElementById('installBanner').style.display = 'none';
+  }
+});
+
+document.getElementById('closeBtn').addEventListener('click', () => {
+  document.getElementById('installBanner').style.display = 'none';
+});
 </script><body>
   <header class="nav">
     <div class="container nav-inner">
