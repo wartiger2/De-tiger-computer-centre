@@ -14,7 +14,8 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script></head>
-<script>
+<body>
+  <script>
 let deferredPrompt;
 const installBtn = document.createElement('div');
 installBtn.innerHTML = `
@@ -45,7 +46,7 @@ document.getElementById('installBtn').addEventListener('click', async () => {
 document.getElementById('closeBtn').addEventListener('click', () => {
   document.getElementById('installBanner').style.display = 'none';
 });
-</script><body>
+</script>
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand">
